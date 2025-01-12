@@ -1,0 +1,8 @@
+alpine-base
+curl
+haveged
+openntpd
+openssh
+openssl
+vim
+wpa_supplicant
