@@ -1,8 +1,9 @@
 alpine-base
 curl
+chrony
 haveged
-openntpd
 openssh
 openssl
+tzdata
 vim
 wpa_supplicant

@@ -3,11 +3,12 @@ profile_vattu() {
     apkovl=genapkovl.sh
     apks="
         alpine-base
+        chrony
         curl
         haveged
-        openntpd
         openssh
         openssl
+        tzdata
         vim
         wpa_supplicant
     "

@@ -25,15 +25,18 @@ trap cleanup EXIT
 
 cp -R /apkovl/* "$tmp"/
 
+mkdir -p "$tmp"/etc
+ln -s /usr/share/zoneinfo/UTC "$tmp"/etc/localtime
+
+makefile root:root 0644 "$tmp"/etc/hostname <<EOF
+${HOSTNAME}
+EOF
+
 mkdir -p "$tmp"/etc/apk
 makefile root:root 0644 "$tmp"/etc/apk/repositories <<EOF
 /media/mmcblk0p1/apks
 https://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main
 https://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/community
-EOF
-
-makefile root:root 0644 "$tmp"/etc/hostname <<EOF
-${HOSTNAME}
 EOF
 
 mkdir -p "$tmp"/etc/init.d
@@ -56,6 +59,7 @@ start() {
 }
 EOF
 
+mkdir -p "$tmp"/etc/init.d
 makefile root:root 0744 "$tmp"/etc/init.d/wpa_supplicant-setup <<EOF
 #!/sbin/openrc-run
 
@@ -95,6 +99,6 @@ rc_add mount-ro shutdown
 rc_add killprocs shutdown
 rc_add savecache shutdown
 
-rc_add openntpd default
+rc_add chronyd default
 
 tar -c -C "$tmp" $(cd "$tmp" && echo *) | gzip -9n > "$PROFILE.apkovl.tar.gz"
