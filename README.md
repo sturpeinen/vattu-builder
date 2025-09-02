@@ -19,7 +19,7 @@ $ ./build.sh amazing aarch64
 ...
 $ ls -l build
 total 148200
--rw-r--r--@ 1 keimo  staff  75877809 Jan 12 14:37 amazing-3.21.2-aarch64.tar.gz
+-rw-r--r--@ 1 keimo  staff  97688862 Sep  2 13:30 amazing-3.22.1-aarch64.tar.gz
 ```
 
 ## Configuring ethernet

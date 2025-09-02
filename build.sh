@@ -2,8 +2,8 @@
 
 umask 0077
 
-ALPINE_VERSION=3.21
-APORTS_VERSION=3.21.2
+ALPINE_VERSION=3.22
+APORTS_VERSION=3.22.1
 
 print_usage() {
     echo "Usage: build.sh HOSTNAME ARCH"
